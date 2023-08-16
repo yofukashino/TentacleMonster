@@ -1,7 +1,7 @@
 {
-  "name": "plugin-template",
+  "name": "tentacle-monster",
   "version": "1.0.0",
-  "description": "A plugin template",
+  "description": "A replugged plugin for stereo audio.",
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
