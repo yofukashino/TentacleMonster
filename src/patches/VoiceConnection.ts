@@ -25,7 +25,7 @@ export const patchVoiceConnection = (): void => {
       if (args[0].encodingVoiceBitRate) {
         args[0].encodingVoiceBitRate = 1512000;
       }
-      VoiceUtils!.setInputVolume(Infinity);
+      VoiceUtils!.setInputVolume(100);
       return res;
     });
     return res;
