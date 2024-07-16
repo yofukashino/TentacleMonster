@@ -1,0 +1,42 @@
+div:has(> .tentacle-simple-switch) {
+  transform: scale(0.75);
+  position: absolute;
+  padding-right: 10px;
+  width: 100%;
+  bottom: -5px;
+  left: calc(100% - 160px);
+}
+.tentacle-simple-switch > div {
+  gap: 8px;
+}
+.tentacle-option-flex {
+  gap: 8px;
+}
+.tentacle-option-flex > * {
+  max-width: 100%;
+  width: 45%;
+  flex: unset !important;
+}
+.tentacle-simple-switch > div > label {
+  flex: unset;
+}
+.tentacle-simple-switch [class^="divider"] {
+  display: none;
+}
+
+.tentacle-popout {
+  background: var(--bg-surface-overlay);
+  border-radius: var(--radius);
+  padding: 12px;
+  width: 100%;
+  min-width: 256px;
+  max-width: 292px;
+}
+.tentacle-popout.advanced {
+  min-width: 512px;
+  max-width: 512px;
+}
+
+.tentacle-popout.advanced div:has(> .tentacle-simple-switch) {
+  left: calc(100% - 200px);
+}
