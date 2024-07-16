@@ -4,9 +4,9 @@ import { defaultSettings } from "./consts";
 import Modules from "./requiredModules";
 import Types from "../types";
 
-export const updateVoiceConnection = () => {
+export const updateVoiceConnection = (): void => {
   const connection = Array.from(
-    Modules.MediaEngineStore?.getMediaEngine().connections.values()!,
+    Modules.MediaEngineStore!.getMediaEngine().connections.values(),
   ).find((c) => c.context === "default")!;
   if (!connection) return;
 
