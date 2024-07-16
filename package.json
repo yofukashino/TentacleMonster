@@ -1,6 +1,6 @@
 {
   "name": "tentacle-monster",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "A replugged plugin for stereo audio.",
   "engines": {
     "node": ">=18.0.0",
