@@ -17,7 +17,7 @@ export const defaultSettings = {
   stereo: false,
   fec: false,
   monoDecoding: false,
-  resetVolume: false
+  resetVolume: false,
 };
 
 export const simpleFormats = {
