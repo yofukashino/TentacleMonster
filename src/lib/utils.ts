@@ -27,36 +27,33 @@ export const updateVoiceConnection = (): void => {
 
   if (SettingValues.get("priority", defaultSettings.priority)) options.prioritySpeakerDucking = 95;
 
-  options.audioEncoder = {} as Types.TransportArg["audioEncoder"];
+  options.audioEncoder = {
+    channels: SettingValues.get("customChannels", defaultSettings.customChannels)
+      ? SettingValues.get("channels", defaultSettings.channels)
+      : defaultSettings.channels,
+    freq: SettingValues.get("customFreq", defaultSettings.customFreq)
+      ? SettingValues.get("freq", defaultSettings.freq)
+      : defaultSettings.freq,
+    rate: SettingValues.get("customRate", defaultSettings.customRate)
+      ? SettingValues.get("rate", defaultSettings.rate)
+      : defaultSettings.rate,
+    pacsize: SettingValues.get("customPacsize", defaultSettings.customPacsize)
+      ? SettingValues.get("pacsize", defaultSettings.pacsize)
+      : defaultSettings.pacsize,
+    params: SettingValues.get("stereo", defaultSettings.stereo) ? { stereo: "2" } : { mono: "2" },
+  };
 
-  options.audioEncoder.channels = SettingValues.get(
-    "customChannels",
-    defaultSettings.customChannels,
-  )
-    ? SettingValues.get("channels", defaultSettings.channels)
-    : defaultSettings.channels;
-
-  options.audioEncoder.freq = SettingValues.get("customFreq", defaultSettings.customFreq)
-    ? SettingValues.get("freq", defaultSettings.freq)
-    : defaultSettings.freq;
-
-  options.audioEncoder.rate = SettingValues.get("customRate", defaultSettings.customRate)
-    ? SettingValues.get("rate", defaultSettings.rate)
-    : defaultSettings.rate;
-
-  options.audioEncoder.pacsize = SettingValues.get("customPacsize", defaultSettings.customPacsize)
-    ? SettingValues.get("pacsize", defaultSettings.pacsize)
-    : defaultSettings.pacsize;
-
-  if (SettingValues.get("stereo", defaultSettings.stereo)) {
-    options.audioEncoder.params = {
-      stereo: "2",
-    };
-  } else {
-    options.audioEncoder.params = {
-      stereo: "1",
-    };
-  }
+  options.audioDecoders = [
+    {
+      channels: defaultSettings.channels,
+      freq: defaultSettings.freq,
+      rate: defaultSettings.rate,
+      pacsize: defaultSettings.pacsize,
+      params: SettingValues.get("monoDecoding", defaultSettings.monoDecoding)
+        ? { mono: "2" }
+        : { stereo: "2" },
+    },
+  ];
 
   options.fec = SettingValues.get("fec", defaultSettings.fec);
 

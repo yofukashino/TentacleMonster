@@ -5,15 +5,15 @@
   "author": {
     "name": "Nanakusa",
     "discordID": "1121961711080050780",
-    "github": "YofukashiNo"
+    "github": "yofukashino"
   },
   "version": "2.0.0",
   "updater": {
     "type": "github",
-    "id": "YofukashiNo/TentacleMonster"
+    "id": "yofukashino/TentacleMonster"
   },
   "license": "MIT",
-  "source": "https://github.com/YofukashiNo/TentacleMonster",
+  "source": "https://github.com/yofukashino/TentacleMonster",
   "type": "replugged-plugin",
   "renderer": "src/index.ts",
   "plaintextPatches": "src/plaintextPatches.ts"

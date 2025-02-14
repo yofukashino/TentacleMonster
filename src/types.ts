@@ -18,13 +18,24 @@ export namespace Types {
     attenuateWhileSpeakingOthers?: boolean;
     attenuationFactor: number;
     prioritySpeakerDucking?: number;
-    audioEncoder: {
+    audioDecoders?: Array<{
       channels: number;
       freq: number;
       rate: number;
       pacsize: number;
       params: {
-        stereo: string;
+        stereo?: string;
+        mono?: string;
+      };
+    }>;
+    audioEncoder?: {
+      channels: number;
+      freq: number;
+      rate: number;
+      pacsize: number;
+      params: {
+        stereo?: string;
+        mono?: string;
       };
     };
     fec: boolean;
@@ -530,6 +541,8 @@ export namespace Types {
     priority: boolean;
     stereo: boolean;
     fec: boolean;
+    monoDecoding: boolean;
+    resetVolume: boolean;
   }
 }
 export default Types;

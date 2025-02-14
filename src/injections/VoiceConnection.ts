@@ -5,7 +5,8 @@ import Modules from "../lib/requiredModules";
 import Types from "../types";
 
 export default (): void => {
-  PluginInjector.after(Modules?.VoiceConnection!.prototype, "connect", (_args, res) => {
+  PluginInjector.after(Modules?.VoiceConnection!.prototype, "connect", ([context], res, i) => {
+    if (context !== "default") return res;
     if (SettingValues.get("priority", defaultSettings.priority))
       res.setCanHavePriority(UltimateUserStore.getCurrentUser().id, true);
     const originalTransportOptions = res.conn.setTransportOptions.bind(res.conn);
@@ -41,6 +42,17 @@ export default (): void => {
           };
       }
 
+      if (
+        SettingValues.get("monoDecoding", defaultSettings.monoDecoding) &&
+        Array.isArray(options.audioDecoders)
+      ) {
+        options.audioDecoders.forEach((decoder) => {
+          if (decoder)
+            decoder.params = {
+              mono: "2",
+            };
+        });
+      }
       options.fec = SettingValues.get("fec", defaultSettings.fec);
 
       if (
@@ -52,9 +64,11 @@ export default (): void => {
           defaultSettings.voiceBitrate,
         );
       }
-      Modules?.VoiceUtils!.setInputVolume(100);
+      if (SettingValues.get("resetVolume", defaultSettings.resetVolume))
+        Modules?.VoiceUtils!.setInputVolume(100);
       return originalTransportOptions(options);
     };
+
     return res;
   });
 };

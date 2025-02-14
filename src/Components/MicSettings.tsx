@@ -74,6 +74,16 @@ export const SimpleSettings = () => {
       <SwitchItem {...util.useSetting(SettingValues, "fec", defaultSettings.fec)}>
         FEC (Forward Error Correction)
       </SwitchItem>
+      <SwitchItem
+        note="Decode Remote Streams in Mono"
+        {...util.useSetting(SettingValues, "monoDecoding", defaultSettings.monoDecoding)}>
+        Mono Decoding
+      </SwitchItem>
+      <SwitchItem
+        note="Keep Input Volume at 100% consistently"
+        {...util.useSetting(SettingValues, "resetVolume", defaultSettings.resetVolume)}>
+        Consistent Volume
+      </SwitchItem>
       <Flex
         wrap={Flex.Wrap.WRAP}
         justify={Flex.Justify.AROUND}
@@ -272,6 +282,17 @@ export const AdvancedSettings = () => {
       <SwitchItem {...util.useSetting(SettingValues, "fec", defaultSettings.fec)}>
         FEC (Forward Error Correction)
       </SwitchItem>
+      <SwitchItem
+        note="Decode Remote Streams in Mono"
+        {...util.useSetting(SettingValues, "monoDecoding", defaultSettings.monoDecoding)}>
+        Mono Decoding
+      </SwitchItem>
+      <SwitchItem
+        note="Keep Input Volume at 100% consistently"
+        {...util.useSetting(SettingValues, "resetVolume", defaultSettings.resetVolume)}>
+        Consistent Volume
+      </SwitchItem>
+
       <Flex
         wrap={Flex.Wrap.WRAP}
         justify={Flex.Justify.AROUND}
